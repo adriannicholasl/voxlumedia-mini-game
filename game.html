@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Voxlumedia Pair Game</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" as="image" href="assets/images/card/back/back.png">
+  <link rel="preload" as="image" href="assets/images/ui/star-3.png">
+</head>
+
+<body>
+
+  <!-- HOW TO PLAY MODAL -->
+  <div id="howToPlayModal" class="modal">
+    <div class="modal-content">
+      <h2>How to Play</h2>
+      <p>🎮 Match all pairs of cards as fast as you can!</p>
+      <br>
+      <ul>
+        <li>Click a card to reveal it.</li>
+        <li>Match two identical cards to score.</li>
+        <li>Match all pairs before time runs out.</li>
+      </ul>
+      <br>
+      <button id="play-button">I’m Ready</button>
+    </div>
+  </div>
+  <div class="game-container">
+
+    <!-- GAME BOARD (KIRI) -->
+    <div id="gameBoard" class="game-board"></div>
+    <div class="info-panel">
+      <!-- Branding -->
+      <div class="branding">
+        <img src="assets/images/logo/logo.png" alt="Voxlumedia Logo" class="logo">
+        <div class="tagline">Creative Digital Experiences</div>
+      </div>
+
+      <!-- Game Info -->
+      <div class="status">
+        <div class="status-item">Time: <span id="timer">00:00</span></div>
+        <div class="status-item">Matched: <span id="matched">0 / 10</span></div>
+      </div>
+
+      <!-- Message & CTA -->
+      <div class="message">
+        <p>We turn ideas into <span class="highlight">impact</span>.</p>
+        <p>Let’s build something creative together.</p>
+      </div>
+      <div class="services">
+        <p>
+          SEO | Social Media Management | Automation | Web Development | Branding & Design | Content Creation | PPC
+          Advertising | Analytics & Reporting
+        </p>
+      </div>
+
+      <!-- <div class="cta">
+          <span class="cta-title">Scan to Explore</span>
+          <img src="assets/images/qr-code.png" alt="QR Code">
+        </div> -->
+
+      <div class="cta">
+        <span class="cta-title">Scan to Explore</span>
+        <img src="assets/images/qr-code.png" alt="QR Code">
+      </div>
+
+      <!-- Scrolling Contact Info -->
+      <div class="contact-bar">
+        <div class="scroll-content">
+          <div class="contact-item">
+            <img src="assets/icons/facebook.png" alt="Facebook" class="social-icon">
+            <span>@voxlumedia</span>
+          </div>
+          <div class="contact-item">
+            <img src="assets/icons/instagram.png" alt="Instagram" class="social-icon">
+            <span>@voxlumedia</span>
+          </div>
+          <div class="contact-item">
+            <img src="assets/icons/website.png" alt="Website" class="social-icon">
+            <span>www.voxlumedia.com</span>
+          </div>
+          <div class="contact-item">
+            <img src="assets/icons/whatsapp.png" alt="WhatsApp" class="social-icon">
+            <span>+1 671-526-0060</span>
+          </div>
+
+          <!-- duplikat -->
+          <div class="contact-item">
+            <img src="assets/icons/facebook.png" alt="Facebook" class="social-icon">
+            <span>@voxlumedia</span>
+          </div>
+          <div class="contact-item">
+            <img src="assets/icons/instagram.png" alt="Instagram" class="social-icon">
+            <span>@voxlumedia</span>
+          </div>
+          <div class="contact-item">
+            <img src="assets/icons/website.png" alt="Website" class="social-icon">
+            <span>www.voxlumedia.com</span>
+          </div>
+          <div class="contact-item">
+            <img src="assets/icons/whatsapp.png" alt="WhatsApp" class="social-icon">
+            <span>+1 671-526-0060</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- WIN SCREEN -->
+    <div id="winScreen" class="win-screen">
+      <div class="win-box">
+        <h1 class="win-title" id="winTitle">Level Complete!</h1>
+        <img id="starImage" class="star-image" src="" alt="Stars">
+        <div class="win-time">Time: <span id="finalTime">00:00</span></div>
+        <div class="button-group">
+          <button class="menu-button" onclick="window.location.href='index.html'">Home</button>
+          <button class="next-button" id="nextLevelBtn">Play Again</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/game_voxlumedia.js"></script>
+</body>
+
+</html>
