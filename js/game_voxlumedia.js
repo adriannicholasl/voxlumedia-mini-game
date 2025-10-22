@@ -1,5 +1,5 @@
 const totalPairs = 10;
-const maxTime = 5;
+const maxTime = 90;
 const gameBoard = document.getElementById("gameBoard");
 const timerDisplay = document.getElementById("timer");
 const matchedDisplay = document.getElementById("matched");
@@ -14,9 +14,12 @@ const playButton = document.getElementById("play-button");
 let firstCard = null;
 let secondCard = null;
 let matched = 0;
-let startTime, timerInterval;
+let timerInterval;
 let lockBoard = false;
-let pausedTime = 0;
+
+const matchSound = document.getElementById("soundMatch");
+const winSound = document.getElementById("soundWin");
+const loseSound = document.getElementById("soundLose");
 
 function shuffleArray(arr) {
   return arr.sort(() => Math.random() - 0.5);
@@ -93,6 +96,8 @@ function checkForMatch() {
     secondCard.classList.add("matched");
     matched++;
     matchedDisplay.textContent = `${matched} / ${totalPairs}`;
+    matchSound.currentTime = 0;
+    matchSound.play();
 
     resetFlip();
 
@@ -114,7 +119,7 @@ function resetFlip() {
 }
 
 function startTimer() {
-  let endTime = Date.now() + maxTime * 1000; // waktu selesai = sekarang + maxTime detik
+  const endTime = Date.now() + maxTime * 1000;
   clearInterval(timerInterval);
 
   timerInterval = setInterval(() => {
@@ -125,7 +130,7 @@ function startTimer() {
 
     if (remaining <= 0) {
       clearInterval(timerInterval);
-      endGame(true); // waktu habis
+      endGame(true);
     }
   }, 500);
 }
@@ -144,14 +149,19 @@ function endGame(isTimeOut) {
   clearInterval(timerInterval);
   finalTime.textContent = timerDisplay.textContent;
 
-  winTitle.textContent = isTimeOut ? "Time's Up!" : "You Win!";
-  const starsEarned = isTimeOut ? 0 : 3;
-  starImage.src = `assets/ui/star-${starsEarned}.png`;
+  if (isTimeOut) {
+    winTitle.textContent = "Time's Up!";
+    starImage.src = "assets/ui/star-0.png";
+    loseSound.currentTime = 0;
+    loseSound.play();
+  } else {
+    winTitle.textContent = "You Win!";
+    starImage.src = "assets/ui/star-3.png";
+    winSound.currentTime = 0;
+    winSound.play();
+  }
+
   winScreen.style.display = "flex";
-
-  starImage.classList.remove("animate");
-  starImage.onload = () => starImage.classList.add("animate");
-
   nextButton.onclick = resetGame;
 }
 
@@ -159,12 +169,6 @@ function resetGame() {
   winScreen.style.display = "none";
   matched = 0;
   matchedDisplay.textContent = `0 / ${totalPairs}`;
-  pausedTime = 0;
   generateCards();
   startTimer();
 }
-
-// window.addEventListener("load", () => {
-//   generateCards();
-//   startTimer();
-// });
