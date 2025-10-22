@@ -505,3 +505,101 @@ body {
     opacity: 1;
   }
 }
+
+/* =================== MOBILE RESPONSIVE =================== */
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  .game-container {
+    flex-direction: column; /* logo/timer → main → info */
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    /* height: auto; */
+  }
+
+  /* Logo & Timer */
+  .branding,
+  .status {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .branding .logo {
+    width: 100px;
+  }
+  .status {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+
+  /* Main game board */
+  .game-board {
+    width: 100%;
+    max-width: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+
+  .card {
+    width: 100%;
+    aspect-ratio: 1/1;
+    perspective: 800px;
+  }
+
+  /* Info panel bawah */
+  .info-panel {
+    width: 100%;
+    padding: 1rem;
+    border-left: none;
+    border-top: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Buttons responsive */
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .menu-button,
+  .next-button,
+  #play-button,
+  .start-button {
+    width: 80%;
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+
+  /* Win screen responsive */
+  .win-box {
+    max-width: 90%;
+    padding: 1.5rem;
+    gap: 20px;
+  }
+
+  .win-title {
+    font-size: 1.8rem;
+  }
+  .star-image {
+    width: 90%;
+  }
+}

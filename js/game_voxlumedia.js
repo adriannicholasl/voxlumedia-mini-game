@@ -29,8 +29,8 @@ function adjustCardSize() {
   const gameBoard = document.querySelector(".game-board");
   const cards = document.querySelectorAll(".card");
 
-  const rows = 4;
-  const cols = 5;
+  const rows = window.innerWidth <= 768 ? 5 : 4;
+  const cols = window.innerWidth <= 768 ? 4 : 5;
   const gap = 10;
 
   const boardHeight = gameBoard.clientHeight;
@@ -89,6 +89,8 @@ function handleFlip(card) {
 }
 
 function checkForMatch() {
+  if (!firstCard || !secondCard) return;
+
   const isMatch = firstCard.dataset.id === secondCard.dataset.id;
 
   if (isMatch) {
@@ -96,8 +98,10 @@ function checkForMatch() {
     secondCard.classList.add("matched");
     matched++;
     matchedDisplay.textContent = `${matched} / ${totalPairs}`;
-    matchSound.currentTime = 0;
-    matchSound.play();
+    try {
+      matchSound.currentTime = 0;
+      matchSound.play();
+    } catch (e) {}
 
     resetFlip();
 
@@ -135,14 +139,33 @@ function startTimer() {
   }, 500);
 }
 
+// Unlock audio for mobile autoplay
+function unlockAudio() {
+  [matchSound, winSound, loseSound].forEach((sound) => {
+    sound
+      .play()
+      .then(() => sound.pause())
+      .catch(() => {});
+  });
+}
+
 window.addEventListener("load", () => {
   howToPlayModal.style.display = "flex";
 });
 
 playButton.addEventListener("click", () => {
   howToPlayModal.style.display = "none";
+
+  // Reset game state
+  firstCard = null;
+  secondCard = null;
+  matched = 0;
+  lockBoard = false;
+  matchedDisplay.textContent = `0 / ${totalPairs}`;
+
   generateCards();
   startTimer();
+  unlockAudio();
 });
 
 function endGame(isTimeOut) {
@@ -152,13 +175,17 @@ function endGame(isTimeOut) {
   if (isTimeOut) {
     winTitle.textContent = "Time's Up!";
     starImage.src = "assets/ui/star-0.png";
-    loseSound.currentTime = 0;
-    loseSound.play();
+    try {
+      loseSound.currentTime = 0;
+      loseSound.play();
+    } catch (e) {}
   } else {
     winTitle.textContent = "You Win!";
     starImage.src = "assets/ui/star-3.png";
-    winSound.currentTime = 0;
-    winSound.play();
+    try {
+      winSound.currentTime = 0;
+      winSound.play();
+    } catch (e) {}
   }
 
   winScreen.style.display = "flex";
@@ -167,8 +194,12 @@ function endGame(isTimeOut) {
 
 function resetGame() {
   winScreen.style.display = "none";
+  firstCard = null;
+  secondCard = null;
   matched = 0;
+  lockBoard = false;
   matchedDisplay.textContent = `0 / ${totalPairs}`;
+
   generateCards();
   startTimer();
 }
