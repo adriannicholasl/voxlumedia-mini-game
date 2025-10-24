@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voxlumedia Pair Game</title>
+  <title>Voxlumedia Games</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     body {
@@ -18,20 +18,116 @@
       overflow: hidden;
       font-family: "BB Strata Pro SEF", sans-serif;
       color: white;
+      text-align: center;
+      /* Untuk menengahkan teks "Choose your game" */
     }
 
     .logo {
-      width: 200px;
+      width: 230px;
       margin-bottom: 30px;
       filter: drop-shadow(0 0 20px #00bfff);
+    }
+
+    .game-selection {
+      margin-top: 30px;
+    }
+
+    .game-selection h2 {
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    .game-icons {
+      display: flex;
+      gap: 40px;
+      /* Jarak antar ikon */
+      flex-wrap: wrap;
+      /* Agar ikon bisa wrap ke baris baru jika layar kecil */
+      justify-content: center;
+    }
+
+    .game-icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      /* Menghilangkan underline pada link */
+      color: white;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .game-icon-container:hover {
+      transform: scale(1.05);
+      /* Efek hover */
+    }
+
+    .game-icon {
+      width: 150px;
+      /* Ukuran ikon */
+      height: 150px;
+      border-radius: 25px;
+      /* Sudut membulat */
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
+      /* Efek bayangan biru */
+      margin-bottom: 15px;
+      /* Jarak antara ikon dan nama game */
+      object-fit: cover;
+      /* Memastikan gambar mengisi area tanpa terdistorsi */
+      border: 3px solid #00bfff;
+      /* Border biru */
+    }
+
+    .game-name {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .game-icons {
+        gap: 50px;
+      }
+
+      .game-icon {
+        width: 100px;
+        height: 100px;
+      }
+
+      .game-selection h2 {
+        font-size: 1.5em;
+      }
+
+      .game-name {
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 
 <body>
   <img src="assets/images/logo/logo.png" alt="Voxlumedia Logo" class="logo">
-  <button class="start-button" onclick="location.href='game.html'">Let’s Play!</button>
 
+  <div class="game-selection">
+    <h2>Choose your game:</h2>
+    <div class="game-icons">
+      <a href="game.html" class="game-icon-container" onclick="location.href='game.html'">
+        <img src="assets/icons/match_card_icon.png" alt="Match Card Icon" class="game-icon">
+        <span class="game-name">Match Card</span>
+      </a>
+      <a href="F:\Voxlumedia Mini Game\Zombie Shooter\index.html" class="game-icon-container">
+        <img src="assets/icons/zombie_shooter_icon.png" alt="Zombie Shooter Icon" class="game-icon">
+        <span class="game-name">Zombie Shooter</span>
+      </a>
+      <a href="F:\Voxlumedia Mini Game\Camel Dash\index.html" class="game-icon-container">
+        <img src="assets/icons/camel_dash_icon.png" alt="Camel Dash Icon" class="game-icon">
+        <span class="game-name">Camel Dash</span>
+      </a>
+      <a href="F:\Voxlumedia Mini Game\Camel Ball\index.html" class="game-icon-container">
+        <img src="assets/icons/camel_ball_icon.png" alt="Camel Ball Icon" class="game-icon">
+        <span class="game-name">Camel Ball</span>
+      </a>
+    </div>
+  </div>
 </body>
 
 </html>

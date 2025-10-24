@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camel Dash — Desert Run (Top-Down)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Landing (separate from gameplay) ===== -->
+  <section id="landing" class="landing">
+    <div class="landing-card">
+      <h1 class="title">🐪 Camel Dash — Desert Run</h1>
+      <p class="subtitle">
+        A fast, <b>top-down</b> arcade runner. Steer your camel through the Egyptian desert,
+        <b>collect dates</b>, and <b>avoid obstacles</b>. Reach the best score in 60 seconds.
+      </p>
+
+      <div class="mechanics">
+        <h3>How to Play</h3>
+        <ul>
+          <li><b>Move:</b> <span class="kbd">←</span> / <span class="kbd">→</span></li>
+          <li><b>Dash:</b> <span class="kbd">↑</span> (short speed boost, 3s cooldown)</li>
+          <li><b>Start/Restart:</b> <span class="kbd">Enter</span></li>
+          <li><b>Pause/Resume:</b> <span class="kbd">P</span> &nbsp;|&nbsp; <b>Hide/Show Panel:</b> <span class="kbd">H</span></li>
+          <li><b>Scoring:</b> +5 per date, passive points over time</li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <button id="btnStart" class="btn primary">Start Game (Enter)</button>
+        <button id="btnHow" class="btn ghost">Show On-Screen Controls</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Gameplay Area ===== -->
+  <main id="playArea" class="play hidden">
+    <!-- Non-intrusive top HUD -->
+    <div class="topbar">
+      <div class="brand">🐪 Camel Dash — Desert Run</div>
+      <div class="stats">
+        <span class="pill">Score: <b id="score">0</b></span>
+        <span class="pill">Time: <b id="time">60</b>s</span>
+        <span class="pill">Lives: <b id="lives">1</b></span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <canvas id="game" width="1280" height="720" aria-label="Camel Dash — Top-Down"></canvas>
+    </div>
+
+    <!-- Overlay (pause / game over / tutorial) — dockable/hideable -->
+    <div class="center-msg" id="overlay" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2 class="title" id="ovTitle">Paused</h2>
+          <div class="card-actions">
+            <button class="btn tiny" id="btnDock">Dock to Side</button>
+            <button class="btn tiny" id="btnHide">Hide</button>
+          </div>
+        </div>
+        <p class="subtitle" id="ovSub">Press <b>P</b> to resume.</p>
+        <div class="actions">
+          <button id="btnRestart" class="btn primary">Start / Restart (Enter)</button>
+          <button id="btnBack" class="btn ghost">Back to Landing</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small toast that doesn’t block gameplay -->
+    <div id="pauseToast" class="toast" hidden>⏸ Paused — press <b>P</b> to resume</div>
+
+    <!-- On-Screen Controls (compact, bottom, click/tap supported) -->
+    <div class="osk" id="osk">
+      <div class="osk-row">
+        <button class="key" data-key="ArrowUp">Dash ↑</button>
+      </div>
+      <div class="osk-row">
+        <button class="key" data-key="ArrowLeft">←</button>
+        <button class="key" data-key="Enter">Enter</button>
+        <button class="key" data-key="ArrowRight">→</button>
+        <button class="key" data-key="KeyP">P</button>
+      </div>
+      <p class="osk-hint">Use your remote/keyboard or tap the buttons.</p>
+    </div>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Creepster");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+html, body {
+  margin: 0;
+  overflow: hidden;
+}
+canvas {
+  background: linear-gradient(to bottom, #e3c16f, #c2a14a, #b58b3a);
+  /* gradasi pasir dari terang ke gelap */
+}

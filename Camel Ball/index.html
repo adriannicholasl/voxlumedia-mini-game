@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ball sahara Game</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <h1> 𝗦𝗔𝗛𝗔𝗥𝗔 𝗦𝗛𝗢𝗧 </h1>
+                <div class="theme-info">
+                    <span id="themeName">Klasik</span>
+                    <span id="themeEmoji">🏀</span>
+                </div>
+            </div>
+            <div class="score-info">
+                <div class="score-item">
+                    <span>🎯 Skor:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span>🏆 Level:</span>
+                    <span id="stage">1</span>
+                </div>
+                <div class="score-item">
+                    <span>⭐ Target:</span>
+                    <span id="target">2</span>
+                </div>
+            </div>
+            <div class="audio-controls">
+                <button class="audio-btn" id="muteBtn">🔊</button>
+            </div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <div class="basket" id="basket">
+                <div class="basket-rim"></div>
+                <div class="basket-net"></div>
+            </div>          
+            <div class="ball" id="ball"></div>            
+            <div class="power-indicator">
+                <div class="power-bar" id="powerBar"></div>
+            </div>	 
+	    <div class="sand-floor"></div>
+
+            <div class="wind-indicator" id="windIndicator" style="display: none;">
+                <div>💨 Angin</div>
+                <div class="wind-arrow" id="windArrow">→</div>
+                <div id="windStrength">Lemah</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            Drag the ball back and release it to throw it into the basket! 🎯
+        </div>
+
+        <div class="stage-complete" id="stageComplete">
+            <h2>🎉 Stage Completed!</h2>
+            <p>Congrats! you've successfuly comppleted this stage.</p>
+            <button class="next-stage-btn" onclick="nextStage()">Next Stage </button>
+        </div>
+
+        <div class="game-complete" id="gameComplete">
+            <h2>🏆 Well done!</h2>
+            <p>You complete all stage!</p>
+            <p>Skor Total: <span id="finalScore">0</span></p>
+            <button class="restart-btn" onclick="restartGame()">Play again </button>
+        </div>
+
+        <div class="start-screen" id="startScreen">
+            <div class="start-content">
+                <h1>🐫 Sahara Shot 🐫</h1>
+                <button class="play-btn" onclick="startGame()">🎮 PLAY GAME!</button>
+            </div>
+        </div>
+    </div>
+	<audio id="bgMusic" loop preload="auto"></audio>
+    <script src="game.js"></script>
+</body>
+</html>

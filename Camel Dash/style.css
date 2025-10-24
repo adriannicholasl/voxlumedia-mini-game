@@ -1,0 +1,112 @@
+:root{
+  --ui-bg: rgba(0,0,0,.45);
+  --ui-bg-strong: rgba(0,0,0,.6);
+  --bg: #08131b;
+  --sand1:#f0df9e;  /* dunes base */
+  --sand2:#e7cf84;  /* dunes shade */
+  --sand3:#d9bd73;  /* deeper shade */
+  --oasis:#3DB2A4;
+  --cactus:#2D7A47;
+  --rock:#6c5c4b;
+  --date:#8B4513;
+  --dateGlow: rgba(139,69,19,.22);
+  --camel:#c99a53;
+  --camelShade:#b7853c;
+  --accent:#2f7fe3;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:#fff;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+
+/* ===== Utilities ===== */
+.hidden{display:none!important}
+.kbd{display:inline-block; background:rgba(255,255,255,.1); padding:2px 6px; border-radius:6px; font-weight:700}
+.pill{background:rgba(255,255,255,.12); padding:4px 8px; border-radius:999px; font-size:12px; font-weight:600}
+.btn{
+  padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.08); color:#fff; cursor:pointer; font-weight:700;
+}
+.btn.primary{border-color:transparent; background:var(--accent)}
+.btn.ghost:hover{background:rgba(255,255,255,.14)}
+.btn:active{transform:translateY(1px)}
+.btn.tiny{padding:6px 8px; font-size:12px; border-radius:8px}
+
+/* ===== Landing ===== */
+.landing{
+  min-height:100vh; display:grid; place-items:center; padding:24px;
+  background:
+    radial-gradient(1200px 600px at 70% 20%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(900px 500px at 20% 80%, rgba(255,255,255,.05), transparent 60%);
+}
+.landing-card{
+  width:min(920px, 92vw);
+  background:var(--ui-bg); backdrop-filter: blur(8px);
+  border-radius:16px; padding:24px 24px 18px;
+  box-shadow:0 16px 50px rgba(0,0,0,.45);
+}
+.title{font-size:clamp(26px,4vw,40px); margin:0 0 6px; font-weight:800;}
+.subtitle{margin:0 0 12px; opacity:.95}
+.mechanics h3{margin:12px 0 6px}
+.mechanics ul{margin:6px 0 12px 18px; line-height:1.6}
+.actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* ===== Play Area ===== */
+.play{min-height:100vh; display:flex; flex-direction:column}
+.topbar{
+  position:sticky; top:0; z-index:3;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; padding:8px 12px; background:var(--ui-bg-strong); backdrop-filter: blur(6px);
+}
+.topbar .brand{font-weight:800; letter-spacing:.3px}
+.topbar .stats{display:flex; gap:8px; flex-wrap:wrap}
+
+.wrap{
+  flex:1; display:grid; place-items:center; padding:10px 10px 120px; /* bottom space for OSK */
+}
+canvas{
+  background: linear-gradient(var(--sand1), var(--sand2)); /* dunes overpainted */
+  border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 2px rgba(255,255,255,.06);
+  max-width:100%; height:auto; touch-action:none;
+}
+
+/* ===== Overlay (dockable/hideable) ===== */
+.center-msg{
+  position:fixed; inset:0; display:grid; place-items:center; pointer-events:none; text-align:center; z-index:3;
+}
+.center-msg .card{pointer-events:auto; background:var(--ui-bg); backdrop-filter: blur(8px);
+  border-radius:16px; padding:18px 20px; width:min(90vw,560px);
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+}
+.card-head{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.card-actions{display:flex; gap:6px}
+
+/* Docked to side (right) */
+.center-msg.side{justify-items:end; padding:90px 18px 18px 18px}
+.center-msg.side .card{width:min(420px, 92vw); margin-right:0}
+
+/* Toast (small, non-intrusive) */
+.toast{
+  position:fixed; right:18px; top:78px; z-index:4;
+  background:rgba(0,0,0,.55); backdrop-filter: blur(6px);
+  border-radius:999px; padding:8px 12px; font-weight:700;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+
+/* ===== On-Screen Controls ===== */
+.osk{
+  position:fixed; left:50%; bottom:14px; transform:translateX(-50%);
+  background:rgba(0,0,0,.38); backdrop-filter: blur(6px);
+  border-radius:16px; padding:10px 12px; text-align:center; z-index:2;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+.osk-row{display:flex; justify-content:center; gap:8px; margin:4px 0}
+.key{
+  min-width:68px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08); color:#fff; font-weight:800; cursor:pointer;
+}
+.key.active{background:var(--accent); border-color:transparent; box-shadow:0 0 0 2px rgba(47,127,227,.35) inset}
+.osk-hint{opacity:.85; font-size:12px; margin:6px 0 2px}
