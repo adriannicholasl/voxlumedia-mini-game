@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eco Hero - Game Buang Sampah</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="header">
+      <div class="title">🌱 ECO HERO 🌱</div>
+      <div class="score-board">
+        <div class="score-item">
+          <div class="score-label">SKOR</div>
+          <div class="score-value" id="score">0</div>
+        </div>
+        <div class="score-item">
+          <div class="score-label">MISS</div>
+          <div class="score-value" id="misses">0</div>
+        </div>
+        <div class="score-item">
+          <div class="score-label">LEVEL</div>
+          <div class="score-value" id="level">1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-area" id="gameArea">
+      <div class="clouds">☁️ ☁️ ☁️</div>
+      <div class="trees">   🪨    🌵     🪨    🌵    🪨    🌵     </div>
+
+      <div class="instructions" id="instructions">
+  <h3 id="howToPlayTitle">How to Play:</h3>
+  <p id="instr1">🎯 Move the bin with your mouse</p>
+  <p id="instr2">🗑️ Catch the falling trah</p>
+  <p id="instr3">💩 Avoid fertilizer (Save the Earth)</p>
+  <p id="instr4">⭐ Trash caught! Great job!</p>
+  <p id="instr5">🌊 NOOO! WATER RISESSSS </p>
+</div>
+
+      <div class="trash-bin" id="trashBin" role="button" aria-label="Trash bin"></div>
+
+      <div class="water-level" id="waterLevel">
+        <div class="water-wave"></div>
+      </div>
+    </div>
+
+    <div class="game-over" id="gameOver" role="dialog" aria-hidden="true">
+      <div>🌊 GAME OVER! 🌊</div>
+      <div style="font-size: 18px; margin: 15px 0;">
+        The earth is polluted because of scattered garbage!
+      </div>
+      <div style="font-size: 16px; margin: 10px 0;">
+        Final Score: <span id="finalScore">0</span>
+      </div>
+      <button class="restart-btn" id="restartBtn">🔄 Try Again</button>
+    </div>
+  </div>
+
+  <audio id="catchSound" src="assets/bellsound.mp3" preload="auto"></audio>
+<audio id="waterRiseSound" src="assets/banjir.mp3" preload="auto"></audio>
+<audio id="gameOverSound" src="assets/gameover1.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
